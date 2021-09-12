@@ -1,0 +1,50 @@
+import string;
+import sys/system;
+
+
+fib1(n) -> [int] {
+    if (n == 0) []
+    else if (n == 1) [0]
+    else if (n == 2) [0, 1]
+    else {
+        arr = fib1(n - 1);
+        arrayPush(arr, arr[n - 2] + arr[n - 3]);     
+    }
+}
+
+fib2(a, b, n, arr) -> [int] {
+    if (n > 0)
+        fib2(b, b + a, n - 1, arrayPush(arr, a))
+    else
+        arr;
+}
+
+
+fib3(n) -> [int] {
+    if (n < 0) {
+        arr : ref [int] = ref [];
+        concat(^arr, []);
+    }
+    else if (n == 0) {
+        arr : ref [int] = ref [0];
+        concat(^arr, []);
+    }
+    else {
+        arr : ref [int] = ref [0, 1];
+	    fori(2, n, \i ->
+		    refArrayPush(arr, (^arr[i - 1] + ^arr[i - 2])));
+        concat(^arr, []);
+    }
+    
+}
+
+main() {
+    n = 10;
+    print("Simple recursive: ");
+    println(strGlue(map(fib1(n), i2s), ", "));
+    print("Tail recursive: ");
+    println(strGlue(map(fib2(0, 1, n, []), i2s), ", "));
+    print("References: ");
+    println(strGlue(map(fib3(n - 1), \i -> i2s(i)), ", "));    
+    quit(0);
+}

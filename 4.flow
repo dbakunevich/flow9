@@ -1,0 +1,17 @@
+import string;
+import ds/tree;
+
+inds(a, m) -> [Pair<int, int>] {
+    tree = makeTree;
+    fori(0, length(a), tree = setTree(tree, i, a[i]));
+    println(tree);
+    res = fold ([1,2,3], makeTree(), \t, x->setTree(t, "x", x));
+
+}
+
+main() 
+{
+    a : [int] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+    println(inds(a, 16));
+    quit(0);
+}

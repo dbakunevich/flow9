@@ -1,0 +1,7 @@
+import string;
+
+main() {
+    a = [1, 2, 3, 4];
+    println(strGlue(map(a, i2s), ", "));
+    quit(0);
+}
